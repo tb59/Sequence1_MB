@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     class ItemAdapter(val dataSet: List<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             //TODO("Not yet implemented")
+            Log.i("traces","createViewHolder")
             val inflater : LayoutInflater = LayoutInflater.from(parent.context)
             val itemView = inflater.inflate(R.layout.item,parent,false)
             return ItemViewHolder(itemView)
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             //TODO("Not yet implemented")
+            Log.i("traces","onBindViewHolder")
             val title : String = dataSet[position]
             (holder as ItemViewHolder).bind(title)
         }
