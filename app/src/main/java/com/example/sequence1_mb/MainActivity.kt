@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         }
         val adapter = ItemAdapter(dataSet)
         list.adapter = adapter
-        list.layoutManager = LinearLayoutManager(this)
+        list.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
     }
 
     class ItemViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
