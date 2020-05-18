@@ -34,16 +34,10 @@ class MainActivity : AppCompatActivity() {
         }
         val adapter = ItemAdapter(dataSet)
         list.adapter = adapter
-        list.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        list.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
     }
 
-    class ItemViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
-        private val tv : TextView = itemView.findViewById(R.id.title)
 
-        fun bind(title : String) {
-            tv.text  = title
-        }
-    }
 
     class ItemAdapter(val dataSet: List<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -65,6 +59,28 @@ class MainActivity : AppCompatActivity() {
             Log.i("traces","onBindViewHolder")
             val title : String = dataSet[position]
             (holder as ItemViewHolder).bind(title)
+        }
+
+        inner class ItemViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
+            private val tv : TextView = itemView.findViewById(R.id.title)
+
+            init {
+                itemView.setOnClickListener {
+                    Log.d("traces","itemView clicked");
+                    // val clickedPost  = dataSet.get(adapterPosition)
+                    val clickedItem  = dataSet[adapterPosition]
+                    // adapterPosition est ... une propriété de l'adapter ?
+                    
+                    Log.d("traces","val : " + clickedItem.toString());
+
+                    // ItemViewHolder doit être classe interne
+                    // Contrairement à java, il faut déclarer inner cette classe même si c'est le cas dans le code
+                }
+            }
+
+            fun bind(title : String) {
+                tv.text  = title
+            }
         }
 
 
